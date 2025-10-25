@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Remix Icons for menu/social icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <title>Landing Page | MISTBORN</title>
+  </head>
+  <body>
+    <!-- ========== HEADER / HERO SECTION ========== -->
+    <header class="main">
+      <!-- Navigation Bar -->
+      <nav>
+        <div class="nav__header">
+          <!-- Logo -->
+          <div class="nav__logo">
+            <a href="#">
+              <img src="assets/logo.png" alt="logo" />
+            </a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-3-line"></i>
+          </div>
+        </div>
+        <!-- Navigation links -->
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- ========== CHARACTER SELECTION SECTION ========== -->
+      <section class="character-select">
+      <h2>Choose Your Character</h2>
+      <div class="character-container">
+        <!-- Thumbnails for character choices -->
+        <div class="characters">
+          <img src="assets/char1.png" data-name="VIN"
+              data-desc="Vin Venture is a half-skaa Mistborn from the Final Empire on Scadrial. Raised by her half-brother Reen after their mother murdered her sister, she later joins Kelsier's crew, trains in Allomancy, and infiltrates the nobility as Valette Renoux. Vin helps save the skaa rebellion's army, kills Shan Elariel, and ultimately defeats the Lord Ruler. After the Collapse, she marries Elend Venture and rules as Empress of the New Empire, defending Luthadel by killing Zane and Straff Venture, stopping rampaging koloss, and forcing Lord Cett's allegiance. In the end, Vin uses the power of Preservation to destroy Ruin and dies, later reborn as a kandra by Sazed, who becomes Harmony.">
+          <img src="assets/char2.png" data-name="KELSIER"
+              data-desc="Kelsier is a half-skaa Mistborn from Scadrial. He is stern and intense, but always smiling as an act of rebellion against the Lord Ruler's oppression. He hates injustice and takes this hatred to the extreme, which originally results in him being unable to see good in any of the nobility. This changes when Vin falls in love with Elend Venture. After this, Kelsier saves Elend's life from a Steel Inquisitor. His late wife Mare collected pre-Ascension memorabilia, and he keeps one piece, a drawing of a flower, to inspire his crew. Kelsier is the younger brother of Marsh, who is disappointed at Kelsier's apparent lack of direction or purpose until Kelsier leads the skaa rebellion.">
+          <img src="assets/char3.png" data-name="ELEND"
+              data-desc="Elend Venture, heir to House Venture, begins as an idealistic nobleman with a passion for books and political philosophy. Drawn to Vin and the skaa rebellion, he rejects his corrupt noble upbringing to help build a fairer world. After the Lord Ruler's fall, Elend becomes king and later emperor of the New Empire, striving to unite fractured kingdoms through diplomacy and law rather than fear. Guided and inspired by Vin, he grows from a reluctant leader into a courageous strategist who defends Luthadel, confronts invading armies, and ultimately sacrifices himself alongside Vin to help Sazed ascend as Harmony and preserve the world.">
+          <img src="assets/char4.png" data-name="ZANE"
+              data-desc="Zane Venture is a Mistborn on the planet of Scadrial. He is the illegitimate son of Straff Venture and the half-brother to Elend Venture.Zane shares certain phenotypic characteristics with his family such as brown curly hair, which he tends to keep shorter than his brother. He has a wiry build with a narrow face and is of medium height. He often wears all black and, despite being a Mistborn, does not wear a mistcloak. Zane had a difficult childhood, as Straff kept his existence secret due to his illegitimacy. Because of a combination of his harsh upbringing and Ruin's influence upon him, Zane has an unstable personality, and engages in dysregulated behavior such as self-harm.">
+          <img src="assets/char5.png" data-name="LORD RULER"
+              data-desc="The Lord Ruler is the immortal tyrant who created and ruled the Final Empire for a thousand years. Once a young Terrisman named Rashek, he seized the power of the Well of Ascension, remade the world to his will, and maintained control through fear, magic, and near-godlike Allomantic and Feruchemical abilities. Though worshiped as a deity and feared as a despot, his actions secretly preserved the planet from destruction until his eventual defeat by Vin.">
+          <img src="assets/char6.png" data-name="SAZED"
+              data-desc="Sazed is a gentle yet wise Keeper of Terris knowledge and a master of Feruchemy. Serving as scholar, guide, and steadfast ally to Vin and Elend, he preserves ancient histories and religions while providing calm counsel in times of chaos. After Vin and Elend's final sacrifice, Sazed takes up the combined powers of Ruin and Preservation, becoming Harmony—a godlike force dedicated to balancing creation and change for the renewed world.">
+        </div>
+      </div>
+    </section>
+
+    <!-- Fullscreen overlay that displays the chosen character -->
+    <div class="selected-character" id="selected-character">
+    <img id="chosen-character" src="assets/char1.png" alt="VIN">
+    <p id="chosen-name">VIN</p>
+    <p id="chosen-desc">Vin Venture is a half-skaa Mistborn from the Final Empire on Scadrial. She later becomes known as Heir to the Survivor, the Ascendant Warrior and the Lady Mistborn, as well as taking on the alias Valette Renoux. </p>
+    </div>
+
+    <!-- ========== HEADER CONTENT ========== -->
+    <div class="header__container">
+      <h1><span>MISTBORN</span><span>THE FINAL EMPIRE</span></h1>
+      <p>
+      Mistborn: The Final Empire, also known simply as Mistborn or The Final Empire, is a fantasy novel written by American author Brandon Sanderson. It was published on July 17, 2006, by Tor Books and is the first novel in the Mistborn trilogy, followed by The Well of Ascension in 2007 and The Hero of Ages in 2008.
+      </p>
+      <div class="header__btn">
+        <button class="btn">
+          BUY TICKET
+          <i class="ri-arrow-right-long-line"></i>
+        </button>
+      </div>
+
+      <!-- Social media icons -->
+      <ul class="socials">
+        <li>
+          <a href="#">
+            <i class="ri-facebook-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="ri-twitter-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="ri-google-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="ri-instagram-line"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Scroll animations + main JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+
+    <script>
+      console.log("%cMade by Shruti Jha 💻", "color: hotpink; font-size: 18px; font-weight: bold;");
+    </script>
+  </body>
+</html>

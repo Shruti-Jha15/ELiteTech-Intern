@@ -1,0 +1,466 @@
+/* =====================
+   FONT IMPORTS
+   ===================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=UnifrakturMaguntia&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+#chosen-name {
+  font-family: 'Pacifico', cursive; /* or any cursive font you like */
+  font-size: 2rem;                  /* adjust size as needed */
+  font-weight: 400;
+}
+
+#chosen-name {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* =====================
+   ROOT & GLOBAL STYLES
+   ===================== */
+
+:root {
+  --primary-color: #ed1d24;
+  --primary-color-dark: #b80314;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'UnifrakturMaguntia', cursive;
+}
+
+img {
+  display:flex;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  font-size: 1.25rem;   /* roughly 20px */
+  line-height: 1.6;     /* optional: better readability */
+}
+
+/* =====================
+   HERO / HEADER
+   ===================== */ 
+
+.main {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+
+  background-image: url("assets/header.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #060604;
+}
+
+/* Fade-in animation overlay for header */
+
+.main::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  opacity: 1;
+  background-color: #060604;
+  z-index: 999;
+
+  animation: main-slider 2s ease-in-out forwards;
+}
+
+/* =====================
+   NAVIGATION
+   ===================== */
+
+nav {
+  position: fixed;
+  isolation: isolate;
+  width: 100%;
+  z-index: 9;
+}
+
+.nav__header {
+  padding: 0.75rem 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+}
+
+.nav__logo a img {
+  max-width: 75px;
+}
+
+.nav__menu__btn {
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav__links {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--primary-color);
+  transition: transform 0.5s;
+  z-index: -1;
+}
+
+.nav__links.open {
+  transform: translateY(100%);
+}
+
+.nav__links a {
+  color: var(--white);
+  white-space: nowrap;
+}
+.nav__links a:hover {
+  color: var(--primary-color-dark);
+}
+
+/* =====================
+   CHARACTER SELECTION
+   ===================== */
+
+.character-select {
+  margin: 3rem auto;
+  text-align: center;
+  color: var(--white);
+}
+
+.character-select h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+/* Thumbnail styling */ 
+
+.characters img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: 
+    transform 0.3s cubic-bezier(.4,2,.6,1),
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.characters img.active {
+  border-color: var(--primary-color);
+}
+
+.characters img:hover {
+  transform: translateX(20px) scale(1.1); /* Slide right and pop */
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+/* =====================
+   SELECTED CHARACTER OVERLAY
+   ===================== */
+
+.selected-character {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;                 /* hidden until a character is clicked */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+  padding: 1rem;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.selected-character.show {
+  display: flex;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.selected-character {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.selected-character.show {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  animation: slideUpFadeIn 0.5s cubic-bezier(.4,2,.6,1) forwards;
+}
+
+/* Medium-size chosen image */
+
+.selected-character img {
+  max-width: min(90vw, 640px);
+  max-height: 60vh;
+  object-fit: contain;
+}
+
+/* Character name below image */
+
+#chosen-name {
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+/* Description below name */ 
+
+#chosen-desc {
+  margin-top: 0.75rem;
+  font-family: 'Poppins', sans-serif;   /* matches name */
+  font-size: 1.05rem;
+  color: #ddd;
+  line-height: 1.6;
+  width: min(85%, 800px);               /* never wider than 800px, otherwise 85% */
+  max-width: 800px;
+  text-align: center;                   /* center the text lines */
+  margin-left: auto;                    /* horizontally center block */
+  margin-right: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  padding: 0 0.25rem;                   /* small horizontal padding on very small screens */
+}
+
+/* Gold text for Elend's description */
+#chosen-desc.gold-desc {
+  color: #a38c0b;   /* golden text color */
+}
+
+/* Purple text for Vin's description */
+#chosen-desc.purple-desc {
+  color: #821582;   /* purple text color */
+}
+
+/* Darkblue text for Lord Ruler's description */
+#chosen-desc.darkblue-desc {
+  color: #3d3df4;   /* blue text color */
+}
+
+/* Silver text for Kelsier's description */
+#chosen-desc.silver-desc {
+  color: #7d7b7b;   /* silver text color */
+}
+
+/* Red text for Zane's description */
+#chosen-desc.red-desc {
+  color: #971e1e;   /* red text color */
+}
+
+/* Green text for Sazed's description */
+#chosen-desc.green-desc {
+  color: #73ee73;   /* green text color */
+}
+
+
+/* =====================
+   HERO TEXT / BUTTONS
+   ===================== */ 
+
+.header__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.header__container h1 {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0 1rem;
+  flex-wrap: wrap;
+  font-weight: 800;
+  color: var(--white);
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.header__container h1 span:nth-child(1) {
+  font-size: clamp(2.5rem, 10vw, 6rem);
+  line-height: 1.1;
+}
+
+.header__container h1 span:nth-child(2) {
+  font-size: clamp(1.1rem, 3.5vw, 2rem);
+}
+
+.header__container p {
+  margin-bottom: 2.5rem;
+  max-width: 60ch;
+  line-height: 1.75rem;
+  color: var(--white);
+}
+
+/* CTA button */
+
+button {
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* Social icons */
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials a {
+  display: inline-flex;
+  padding: 9px 10px;
+  font-display: 1.2rem;
+  color: var(--white);
+  border: 1px solid var(--primary-color);
+  border-radius: 100%;
+}
+
+.socials a:hover {
+  color: var(--primary-color);
+  background-color: var(--white);
+  border-color: var(--white);
+}
+
+/* Overlay animations */
+
+@keyframes main-slider {
+  90% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUpFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =====================
+      MEDIA QUERIES
+   ===================== */
+
+@media (width > 540px) {
+  .header__container h1 span:nth-child(1) {
+    font-size: 8rem;
+    line-height: 7.5rem;
+  }
+}
+
+@media (width > 768px) {
+  nav {
+    position: static;
+    padding: 2rem 1rem;
+    max-width: var(--max-width);
+    margin-inline: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .nav__header {
+    width: fit-content;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav__logo a img {
+    max-width: 120px;
+  }
+
+  .nav__menu__btn {
+    display: none;
+  }
+
+  .nav__links {
+    position: static;
+    width: fit-content;
+    padding: 0;
+    flex-direction: row;
+    gap: 3rem;
+    background-color: transparent;
+    transform: none !important;
+  }
+
+  .nav__links a:hover {
+    color: var(--primary-color);
+  }
+
+  .header__container h1 span:nth-child(1) {
+    font-size: 10rem;
+    line-height: 9rem;
+  }
+}
+
+body {
+  font-family: 'UnifrakturMaguntia', cursive !important;
+}
+
